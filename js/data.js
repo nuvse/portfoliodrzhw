@@ -3,7 +3,19 @@
 /* YouTube: в video вставь только код из ссылки (youtube.com/watch?v=КОД) */
 window.SITE={
 name:{ru:"Аяна Доржиева",en:"Aiana Dorzhieva"},
-email:"aianadrzhw@gmail.com",insta:"drzhw",
+/* КОНТАКТЫ: добавляй/удаляй строки. name — название сети, text — что видно, url — куда ведёт */
+contacts:[
+{name:"Email",text:"aianadrzhw@gmail.com",url:"mailto:aianadrzhw@gmail.com"},
+{name:"Instagram",text:"@drzhw",url:"https://instagram.com/drzhw"}
+/* ,{name:"Telegram",text:"@твой_ник",url:"https://t.me/твой_ник"} */
+/* ,{name:"Behance",text:"behance.net/ник",url:"https://behance.net/ник"} */
+],
+/* ДОКУМЕНТЫ (PDF в папке files). Лишние строки удали. file — путь к файлу */
+docs:[
+{title:{ru:"Резюме (CV)",en:"CV"},file:"files/cv.pdf"},
+{title:{ru:"Биография",en:"Biography"},file:"files/bio.pdf"},
+{title:{ru:"Портфолио",en:"Portfolio"},file:"files/portfolio.pdf"}
+],
 ui:{works:{ru:"Работы",en:"Works"},about:{ru:"Обо мне",en:"About"},contact:{ru:"Контакты",en:"Contact"},
 back:{ru:"Все работы",en:"All works"},start:{ru:"Нажмите, чтобы запустить",en:"Click to start"},
 full:{ru:"Открыть отдельно",en:"Open separately"}},
@@ -38,7 +50,7 @@ en:"An interactive visualization of the Earth's linguistic diversity that shows 
 {id:"tochki-sovpadeniya",year:2026,video:"",images:[],title:{ru:"Точки совпадения",en:"Points of Overlap"},type:{ru:"видеоарт",en:"video art"},
 text:{ru:"Проект обращается к парадоксу: территории могут не соприкасаться географически, но пересекаться на уровне культуры, опыта и восприятия мира. В его основе — жест искусственного наложения карт. Это наложение создаёт воображаемую зону пересечения, пространство, которого не существует в географии, но которое проявляется в культуре. Карта, инструмент, фиксирующий границы, начинает работать иначе: не разделять, а выявлять сходства. Проект предлагает рассматривать географию не только как физическую, но и как метагеографическую категорию — поле пересечений памяти, опыта и культурных кодов.",
 en:"The project addresses a paradox: territories may not touch geographically, yet intersect at the level of culture, experience and perception of the world. It is based on the gesture of artificially overlaying maps. This overlay creates an imagined zone of intersection, a space that does not exist in geography but emerges in culture. The map, a tool that fixes borders, begins to work differently: not to divide but to reveal similarities. The project proposes to see geography not only as a physical but as a metageographic category: a field where memory, experience and cultural codes intersect."}},
-{id:"mezhdu-tochkami",year:2026,video:"",images:["1.jpg","2.jpg","3.jpg","4.jpg"],title:{ru:"Между точками",en:"Between Points"},type:{ru:"инсталляция",en:"installation"},
+{id:"mezhdu-tochkami",year:2026,video:"",images:[],title:{ru:"Между точками",en:"Between Points"},type:{ru:"инсталляция",en:"installation"},
 text:{ru:"Инсталляция о связях между людьми. На травяном поле в форме полукруга расположены световые линии. По ним в разных направлениях движутся световые импульсы, передаваемые от одной точки к другой. Свет постоянно меняет направление: то приближается, то возвращается обратно, создавая ощущение живого обмена. Даже находясь на расстоянии, люди остаются связанными друг с другом.",
 en:"An installation about connections between people. Light lines are laid out on a semicircular grass field. Light impulses travel along them in different directions, passed from one point to another. The light keeps changing direction: approaching, then returning, creating a sense of living exchange. Even at a distance, people remain connected to one another."}}
 ]};
