@@ -17,7 +17,7 @@ function home(){document.title=T(S.name);
 const ys=['all',...new Set(L.map(p=>p.year))],ps=L.filter(p=>flt=='all'||p.year==flt);
 const ctl=`<div class="ctl"><div class="chips">${ys.map(y=>`<button data-f="${y}" class="${flt==y?'a':''}">${y=='all'?U('all'):y}</button>`).join('')}</div><div class="sw">${['grid','list'].map(v=>`<button data-v="${v}" class="${view==v?'a':''}">${U(v)}</button>`).join('')}</div></div>`;
 return `<p class="intro">${U('intro')}</p>`+ctl+(view=='grid'
-?`<div class="grid">${ps.map(p=>`<a class="card rv" href="#/p/${p.id}"><div class="tile" data-id="${p.id}" data-cur="${U('see')}"><div class="ov"><p>${first(T(p.text))}</p></div></div><div class="cap"><b>${T(p.title)}</b><span class="m">${sub(p)}</span></div></a>`).join('')}</div>`
+?`<div class="grid">${ps.map(p=>`<a class="card rv" href="#/p/${p.id}"><div class="tile" data-id="${p.id}" data-cur="${U('see')}"><span class="ph">${T(p.title)}</span><div class="ov"><p>${first(T(p.text))}</p></div></div><div class="cap"><b>${T(p.title)}</b><span class="m">${sub(p)}</span></div></a>`).join('')}</div>`
 :`<div class="list">${ps.map(p=>`<a class="row rv" href="#/p/${p.id}" data-id="${p.id}"><span class="t">${T(p.title)}</span><span class="m">${T(p.type)}</span><span class="m">${p.year}</span></a>`).join('')}</div>`)}
 function proj(id){const i=L.findIndex(p=>p.id==id);if(i<0)return home();
 const p=L[i],n=L[(i+1)%L.length],v=L[(i+L.length-1)%L.length];document.title=`${T(p.title)} — ${T(S.name)}`;
@@ -66,7 +66,7 @@ location.protocol=='file:'?ok():fetch(f,{method:'HEAD'}).then(r=>r.ok?ok():no())
 function go(){const a=$('#app');a.classList.add('out');setTimeout(()=>{a.classList.remove('out');route()},220)}
 function apply(){H.lang=lang;H.dataset.theme=theme;$('#lang').textContent=lang=='ru'?'EN':'RU';
 document.querySelectorAll('header [data-t]').forEach(e=>e.textContent=U(e.dataset.t));
-$('#logo').textContent=$('#fn').textContent=T(S.name);$('#yr').textContent=new Date().getFullYear();route()}
+$('#logo').textContent=T(S.name);$('#fn').textContent=T(S.name)+' · v4';$('#yr').textContent=new Date().getFullYear();route()}
 $('#lang').onclick=()=>{lang=lang=='ru'?'en':'ru';st('lang',lang);apply()};
 $('#theme').onclick=()=>{theme=theme=='dark'?'light':'dark';st('theme',theme);apply()};
 addEventListener('hashchange',go);
