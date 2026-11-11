@@ -5,7 +5,11 @@ const st=(k,v)=>{try{return v===undefined?localStorage.getItem(k):localStorage.s
 let lang=st('lang')||(navigator.language.startsWith('ru')?'ru':'en');
 let theme=st('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
 let view=st('view')||'grid',flt='all',rt=0,CAR=null;
-const L=[...S.projects].sort((a,b)=>b.year-a.year),T=o=>o[lang],U=k=>S.ui[k][lang];
+const q=new URLSearchParams(location.search);if(q.has('preview'))st('pv',q.get('preview')=='off'?'':'1');
+const PRE=!!st('pv'),HID=S.hide||[],ORD=S.order||[];
+const L=S.projects.filter(p=>PRE||!HID.includes(p.id)).sort((a,b)=>{const i=ORD.indexOf(a.id),j=ORD.indexOf(b.id);return(i<0?999:i)-(j<0?999:j)}),T=o=>o[lang],U=k=>S.ui[k][lang];
+const tt=p=>T(p.title)+(HID.includes(p.id)?' (скрыто)':'');
+if(PRE){const b=document.createElement('a');b.id='pvb';b.href='?preview=off';b.textContent='режим просмотра: скрытые работы видны. Выключить';document.body.append(b)}
 const sub=p=>`${T(p.type)}, ${p.year}`,first=t=>(t.match(/^.*?[.?!](\s|$)/)||[t])[0];
 /* поиск картинок: img/<id>/cover.jpg (обложка) и 1.jpg, 2.jpg, 3.jpg ... (галерея) */
 const EX=['jpg','jpeg','png','webp','JPG','JPEG','PNG'];
@@ -17,8 +21,8 @@ function home(){document.title=T(S.name);
 const ys=['all',...new Set(L.map(p=>p.year))],ps=L.filter(p=>flt=='all'||p.year==flt);
 const ctl=`<div class="ctl"><div class="chips">${ys.map(y=>`<button data-f="${y}" class="${flt==y?'a':''}">${y=='all'?U('all'):y}</button>`).join('')}</div><div class="sw">${['grid','list'].map(v=>`<button data-v="${v}" class="${view==v?'a':''}">${U(v)}</button>`).join('')}</div></div>`;
 return `<p class="intro">${U('intro')}</p>`+ctl+(view=='grid'
-?`<div class="grid">${ps.map(p=>`<a class="card rv" href="#/p/${p.id}"><div class="tile" data-id="${p.id}" data-cur="${U('see')}"><span class="ph">${T(p.title)}</span><div class="ov"><p>${first(T(p.text))}</p></div></div><div class="cap"><b>${T(p.title)}</b><span class="m">${sub(p)}</span></div></a>`).join('')}</div>`
-:`<div class="list">${ps.map(p=>`<a class="row rv" href="#/p/${p.id}" data-id="${p.id}"><span class="t">${T(p.title)}</span><span class="m">${T(p.type)}</span><span class="m">${p.year}</span></a>`).join('')}</div>`)}
+?`<div class="grid">${ps.map(p=>`<a class="card rv" href="#/p/${p.id}"><div class="tile" data-id="${p.id}" data-cur="${U('see')}"><span class="ph">${T(p.title)}</span><div class="ov"><p>${first(T(p.text))}</p></div></div><div class="cap"><b>${tt(p)}</b><span class="m">${sub(p)}</span></div></a>`).join('')}</div>`
+:`<div class="list">${ps.map(p=>`<a class="row rv" href="#/p/${p.id}" data-id="${p.id}"><span class="t">${tt(p)}</span><span class="m">${T(p.type)}</span><span class="m">${p.year}</span></a>`).join('')}</div>`)}
 function proj(id){const i=L.findIndex(p=>p.id==id);if(i<0)return home();
 const p=L[i],n=L[(i+1)%L.length],v=L[(i+L.length-1)%L.length];document.title=`${T(p.title)} — ${T(S.name)}`;
 return `<article><div id="gw"></div><div class="pm"><div><a class="m" href="#/">← ${U('back')}</a><h1>${T(p.title)}</h1><p class="m">${sub(p)}</p></div>
@@ -66,7 +70,7 @@ location.protocol=='file:'?ok():fetch(f,{method:'HEAD'}).then(r=>r.ok?ok():no())
 function go(){const a=$('#app');a.classList.add('out');setTimeout(()=>{a.classList.remove('out');route()},220)}
 function apply(){H.lang=lang;H.dataset.theme=theme;$('#lang').textContent=lang=='ru'?'EN':'RU';
 document.querySelectorAll('header [data-t]').forEach(e=>e.textContent=U(e.dataset.t));
-$('#logo').textContent=T(S.name);$('#fn').textContent=T(S.name)+' · v4';$('#yr').textContent=new Date().getFullYear();route()}
+$('#logo').textContent=T(S.name);$('#fn').textContent=T(S.name)+' · v5';$('#yr').textContent=new Date().getFullYear();route()}
 $('#lang').onclick=()=>{lang=lang=='ru'?'en':'ru';st('lang',lang);apply()};
 $('#theme').onclick=()=>{theme=theme=='dark'?'light':'dark';st('theme',theme);apply()};
 addEventListener('hashchange',go);
