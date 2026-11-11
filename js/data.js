@@ -5,7 +5,7 @@ window.SITE={
 /* ПОРЯДОК РАБОТ: переставляй id в этом списке как хочешь (сверху вниз = слева направо в сетке) */
 order:["the-current","untitled-feed","prosto-trava","mezhdu-nebom-i-zemlyoy","ex-situ","global-language","tochki-sovpadeniya","mezhdu-tochkami","tochka-raspada","skvoz-vremya"],
 /* СКРЫТЫЕ РАБОТЫ: впиши id тех, что не должны быть видны посетителям */
-hide:[],
+hide:["the-current","tochki-sovpadeniya"],
 name:{ru:"Аяна Доржиева",en:"Aiana Dorzhieva"},
 /* КОНТАКТЫ: добавляй/удаляй строки. name — название сети, text — что видно, url — куда ведёт */
 contacts:[
