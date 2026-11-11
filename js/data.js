@@ -3,9 +3,9 @@
 /* YouTube: в video вставь только код из ссылки (youtube.com/watch?v=КОД) */
 window.SITE={
 /* ПОРЯДОК РАБОТ: переставляй id в этом списке как хочешь (сверху вниз = слева направо в сетке) */
-order:["the-current","untitled-feed","prosto-trava","mezhdu-nebom-i-zemlyoy","ex-situ","global-language","tochki-sovpadeniya","mezhdu-tochkami","tochka-raspada","skvoz-vremya"],
+order:["ex-situ","global-language","mezhdu-nebom-i-zemlyoy","mezhdu-tochkami","the-current","prosto-trava","tochki-sovpadeniya","tochka-raspada","skvoz-vremya"],
 /* СКРЫТЫЕ РАБОТЫ: впиши id тех, что не должны быть видны посетителям */
-hide:["the-current","tochki-sovpadeniya"],
+hide:["the-current","untitled-feed"],
 name:{ru:"Аяна Доржиева",en:"Aiana Dorzhieva"},
 /* КОНТАКТЫ: добавляй/удаляй строки. name — название сети, text — что видно, url — куда ведёт */
 contacts:[
